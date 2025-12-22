@@ -1,0 +1,40 @@
+name: MLflow CI Workflow
+
+on:
+  push:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  train-and-dockerize:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.14.2"
+
+      - name: Install MLflow
+        run: pip install mlflow
+
+      - name: Run MLflow Project
+        run: mlflow run .
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build Docker Image
+        run: |
+          mlflow models build-docker \
+          --model-uri runs:/$(ls mlruns/*/*/run_id | head -n 1)/model \
+          --name masdana/wine-quality-mlflow
+
+      - name: Push Docker Image
+        run: docker push masdana/wine-quality-mlflow
