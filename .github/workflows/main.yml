@@ -33,9 +33,8 @@ jobs:
       - name: Build Docker Image
         run: |
           MODEL_PATH=$(find mlruns -type d -path "*/artifacts/model" | head -n 1)
-          mlflow models build-docker \
-            --model-uri $MODEL_PATH \
-            --name masdana/wine-quality-mlflow
+          echo "Model path: $MODEL_PATH"
+          mlflow models build-docker --model-uri "$MODEL_PATH" --name masdana/wine-quality-mlflow
 
       - name: Push Docker Image
         run: docker push masdana/wine-quality-mlflow
