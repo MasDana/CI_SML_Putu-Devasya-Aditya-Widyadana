@@ -39,3 +39,5 @@ with mlflow.start_run():
     mlflow.log_artifact("artifacts/model.pkl")
 
     mlflow.sklearn.log_model(model, "model")
+
+    #workflow
