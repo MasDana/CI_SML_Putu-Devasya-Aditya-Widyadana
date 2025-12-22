@@ -25,7 +25,6 @@ jobs:
         run: |
           python --version
           pip --version
-          mlflow --version
           echo "GITHUB_WORKSPACE=$GITHUB_WORKSPACE"
           echo "MLFLOW_TRACKING_URI=$MLFLOW_TRACKING_URI"
           ls -la
