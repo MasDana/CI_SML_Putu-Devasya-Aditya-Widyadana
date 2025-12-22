@@ -7,6 +7,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, f1_score
 import joblib
 import os
+os.environ.pop("MLFLOW_RUN_ID", None)
 
 mlflow.set_experiment("CI Wine Quality Training")
 
