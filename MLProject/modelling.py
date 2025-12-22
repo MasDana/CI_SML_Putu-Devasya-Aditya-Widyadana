@@ -10,7 +10,7 @@ import os
 
 mlflow.set_experiment("CI Wine Quality Training")
 
-df = pd.read_csv("C:/Users/Microsoft/Documents/CI_SML_PUTU DEVASYA ADITYA WIDYADANA/winequality-white_preprocessing.csv")
+df = pd.read_csv("winequality-white_preprocessing.csv")
 
 X = df.drop("quality", axis=1)
 y = df["quality"]
