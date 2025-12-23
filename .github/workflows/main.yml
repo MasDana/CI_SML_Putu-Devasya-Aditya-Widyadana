@@ -64,6 +64,7 @@ jobs:
             mlruns
             MLProject/outputs
             MLProject/run_id.txt
+            overwrite: true
 
       - name: Build Docker Model
         run: |
