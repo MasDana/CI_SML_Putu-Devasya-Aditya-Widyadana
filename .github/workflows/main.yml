@@ -40,9 +40,11 @@ jobs:
           mlflow run MLProject --env-manager=local
 
       - name: Get latest MLflow run_id
+        id: runid
         run: |
-          echo "Listing MLflow runs"
-          ls mlruns || true
+          RUN_ID=$(cat MLProject/run_id.txt)
+          echo "RUN_ID=$RUN_ID"
+          echo "run_id=$RUN_ID" >> $GITHUB_OUTPUT
 
       - name: Upload MLflow artifacts
         uses: actions/upload-artifact@v4
@@ -55,8 +57,13 @@ jobs:
           pip install -U setuptools wheel
 
       - name: Upload to GitHub
-        run: |
-          echo "Artifacts are stored in Docker Hub as container images"
+        uses: actions/upload-artifact@v4
+        with:
+          name: mlflow-artifacts
+          path: |
+            mlruns
+            MLProject/outputs
+            MLProject/run_id.txt
 
       - name: Build Docker Model
         run: |
