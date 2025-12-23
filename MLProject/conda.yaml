@@ -9,3 +9,4 @@ dependencies:
       - scikit-learn
       - pandas
       - joblib
+      - typing_extensions>=4.10.0
