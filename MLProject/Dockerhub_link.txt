@@ -1,0 +1,1 @@
+https://hub.docker.com/r/masdana/wine-quality-mlflow
