@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MLFLOW_TRACKING_URI: file:${{ github.workspace }}/mlruns
-      IMAGE_NAME: wine-quality-mlflow
+      IMAGE_NAME: water_potability_mlflow
 
     steps:
       - name: Run actions/checkout@v3
