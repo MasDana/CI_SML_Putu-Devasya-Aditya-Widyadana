@@ -9,12 +9,12 @@ import joblib
 import os
 os.environ.pop("MLFLOW_RUN_ID", None)
 
-mlflow.set_experiment("CI Wine Quality Training")
+mlflow.set_experiment("CI Water Potability Training")
 
-df = pd.read_csv("winequality-white_preprocessing.csv")
+df = pd.read_csv("water_potability_preprocessing.csv")
 
-X = df.drop("quality", axis=1)
-y = df["quality"]
+X = df.drop("Potability", axis=1)
+y = df["Potability"]
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42

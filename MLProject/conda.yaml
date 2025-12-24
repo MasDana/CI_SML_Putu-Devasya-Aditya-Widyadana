@@ -1,4 +1,4 @@
-name: wine-quality-env
+name: water-potability-env
 channels:
   - conda-forge
 dependencies:

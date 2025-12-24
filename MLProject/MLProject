@@ -1,4 +1,4 @@
-name: wine-quality-ci
+name: water-potability-ci
 
 conda_env: conda.yaml
 
